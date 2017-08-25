@@ -1,0 +1,118 @@
+<div id="page-wrapper">
+<div class="container">
+	<div class="row">
+	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<form role="form" ng-controller="JugadorCtrl" name="registrationForm" ng-submit="addJugador()" novalidate>
+				<h3>Registrar Jugador</h3>
+				<hr class="colorgraph">
+				<h4>Datos Básicos {{jugador.nombre}}</h4>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="form-group">
+				            <input class="form-control" placeholder="Nombre" ng-model="jugador.nombre" name="nombre" required>
+				            <span style="color:red" ng-show="registrationForm.nombre.$dirty && registrationForm.nombre.$invalid">
+								<span ng-show="registrationForm.nombre.$error.required">El nombre es requerido.</span>
+							</span>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="form-group">
+							<input class="form-control" placeholder="Apellido" ng-model="jugador.apellido" name="apellido" required>
+							<span style="color:red" ng-show="registrationForm.apellido.$dirty && registrationForm.apellido.$invalid">
+								<span ng-show="registrationForm.apellido.$error.required">El apellido es requerido.</span>
+							</span>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="form-group">
+							<input class="form-control" placeholder="Apodo" ng-model="jugador.apodo">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="Email" ng-model="jugador.email" name="email" required>
+					<span style="color:red" ng-show="registrationForm.email.$dirty && registrationForm.email.$invalid">
+						<span ng-show="registrationForm.email.$error.required">El email es requerido.</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<input class="form-control" placeholder="Telefono" ng-model="jugador.telefono">
+				</div>
+				<div class="form-group">
+					<input class="form-control" placeholder="Cedula" ng-model="jugador.cedula">
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+				            <span>Fecha de Nacimiento</span>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+				            <input type="date" class="form-control" ng-model="jugador.fechaNacimiento">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+				            <span>Fecha de Vencimiento de Fícha Médica</span>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+				            <input type="date" class="form-control" ng-model="jugador.fechaVencimientoFM">
+						</div>
+					</div>
+				</div>
+				<hr class="colorgraph">
+				<h4>Dirección</h4>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+				            <input type="text" class="form-control" placeholder="Ciudad" ng-model="jugador.direccion.ciudad">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+				            <input type="text" class="form-control" placeholder="Calle" ng-model="jugador.direccion.calle">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-3 col-md-3">
+						<div class="form-group">
+				            <input type="text" class="form-control" placeholder="Número" ng-model="jugador.direccion.numero">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-3 col-md-3">
+						<div class="form-group">
+				            <input type="text" class="form-control" placeholder="Apto" ng-model="jugador.direccion.apto">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<label><input type="checkbox" ng-model="jugador.socio">Socio</label>
+					</div>
+				</div>
+				<hr class="colorgraph">
+				<h4>Posicion</h4>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-3 col-md-3" ng-repeat="posicion in posiciones">
+						<label><input type="checkbox" value="{{posicion}}" ng-checked="selection.indexOf(posicion) > -1" ng-click="toggleSelection(posicion)">{{posicion}}</label>
+					</div>
+				</div>
+				<hr class="colorgraph">
+
+
+				<div class="row">
+					<div class="col-xs-12 col-md-6"><input class="btn btn-primary btn-block btn-lg" type="submit" value="Registrar" ng-disabled="registrationForm.$invalid"></div>
+					<div class="col-xs-12 col-md-6"><a ng-href="/home#/tables" class="btn btn-warning btn-block btn-lg">Cancelar</a></div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>

@@ -1,0 +1,83 @@
+<div id="page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+        <div class="panel panel-info" ng-controller="ProfileCtrl">
+          <div class="panel-heading">
+            <h3 class="panel-title">Perfil de {{jugador.nombre}} {{jugador.apellido}}</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 "> 
+                <img style="height:110px;width:110px" alt="User Pic" ng-src="uploads\imagenes\jugadores\{{jugador.imagen}}"> 
+              </div>
+              <div class=" col-md-9 col-lg-9 "> 
+                <table class="table t able-user-information">
+                  <tbody>
+                    <tr>
+                      <td>Nombre</td>
+                      <td>{{jugador.nombre}} {{jugador.apellido}}</td>
+                    </tr>
+                    <tr>
+                      <td>Apodo</td>
+                      <td>{{jugador.apodo}}</td>
+                    </tr>
+                    <tr>
+                      <td>Cedula de Identidad</td>
+                      <td>{{jugador.cedula}}</td>
+                    </tr>
+                    <tr>
+                      <td>Fecha de Nacimiento</td>
+                      <td>{{ jugador.fechaNacimiento | date:"dd/MM/yyyy"}}</td>
+                    </tr>
+                    <tr ng-class="{ danger : fichaMedicaVencida(jugador.fechaVencimientoFM)}">
+                      <td>Vencimiento Ficha Medica</td>
+                      <td>{{ jugador.fechaVencimientoFM | date:"dd/MM/yyyy"}}</td>
+                    </tr>
+                    <tr>
+                      <td>Socio</td>
+                      <td ng-if="jugador.socio">Si</td>
+                      <td ng-if="!jugador.socio">No</td>
+                    </tr>
+                    <tr>
+                      <td>Direccion</td>
+                      <td>{{jugador.direccion.calle}} {{jugador.direccion.numero}} <span ng-if="!jugador.apto">, Apto:{{jugador.direccion.apto}}</span><br>
+                        {{jugador.direccion.ciudad}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td><a href="jugador.email">{{jugador.email}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>Numero de Telefono</td>
+                      <td> - (Casa)<br><br>{{jugador.telefono}} (Celular)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Posición</td>
+                      <td><div ng-repeat="position in jugador.posicion">{{position}}{{$last ? '' : ', '}}</div></td>
+                    </tr>
+                    <tr ng-if="jugador.medidas[0] != undefined">
+                      <td>Medidas</td>
+                      <td>Altura: {{jugador.medidas[0].altura}} cm, Peso: {{jugador.medidas[0].peso}} kg ({{jugador.medidas[0].fecha | date:"dd/MM/yyyy"}})</div></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><button class="btn btn-primary" ng-click="goToMedicalHistory()">Ver historia medica</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <a title="Editar" ng-href="/home#/editPlayer" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+            <a title="Borrar" data-toggle="modal" type="button" data-target="#confirmationModal" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+          </div>
+        </div>
+        <a id="btnEliminar" class="btn btn-primary" ng-click="eliminarJugador(jugador._id);" ng-hide="true">Boton escondido</a>
+      </div>
+    </div>
+  </div>
+</div>    

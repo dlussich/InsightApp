@@ -1,0 +1,37 @@
+-----------------------------------
+------------- SUBLIME -------------
+-----------------------------------
+Ctrl + D y Alt F3 will search by whole words (variables) automatically.
+Ctrl + Shift + P : Abre el coso de paquetes, si ahi pones install packages podes buscar plugins para instalar
+-----------------------------------
+------------- GIT -----------------
+-----------------------------------
+https://www.youtube.com/watch?v=mYjZtU1-u9Y
+http://308tube.com/youtube/git/index.html
+ls: listado del directorio donde esta parado
+Para configurar donde arranca Git Bash, hacemos click derecho en GitBash > Prop > Start in:
+
+git config --global user.name "hpintos"
+git config --global user.email "hpintos26@gmail.com"
+Estas dos configuraciones se guardan junto con cada COMMIT
+
+git init <project folder> #Esto hace a la carpeta un repositorio git:  
+git status #Para ver el status
+git add . #Agrega todo las carpetas de nuestro projecto
+git add <archivo o carpeta> #Agrega eso especificamente
+git rm --cached <archivo>
+git commit -m "mensaje" #Comitea lo que esta en cache
+git commit -a
+git log 
+git log --oneline #Te muestra solamente los comentarios
+git diff #Diferencias entre lo comitiado y lo que esta en cache
+git diff --cached #Por mas que se le haya hecho add, te muestra las diferencias
+
+git remote add heroku git@heroku.com:insightplayer.git
+git push heroku HEAD:master
+mongodb://admin:admin@ds057204.mongolab.com:57204/testinsight
+
+git push https://hpintos@bitbucket.org/hpintos/insight-app.git
+-----------------------------------
+------------- HEROKU --------------
+-----------------------------------

@@ -1,0 +1,62 @@
+<div id="page-wrapper">	
+	<h2>Historia medica - {{jugador.nombre}} {{jugador.apellido}}</h2>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-5">
+			<form role="form" name="medicalHistoryForm" ng-submit="addMedicalHistoryRecord()" novalidate>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6">
+			            <div class="form-group">
+							<input class="form-control" placeholder="Medico" ng-model="historia.medico" name="medico" required>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6">
+			            <div class="form-group">
+							<input type="date" class="form-control" ng-model="historia.fecha">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="form-group">
+							<textarea class="form-control" rows="3" placeholder="Descripcion" name="descripcion" ng-model="historia.descripcion" required>
+							</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-6 col-md-offset-3">
+						<div class="form-group">
+							<input class="btn btn-primary btn-block btn-lg" type="submit" value="{{buttonLabel}}" ng-disabled="medicalHistoryForm.$invalid">
+							<a ng-click="goToProfile()" class="btn btn-warning btn-block btn-lg">Cancelar</a>					
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-7">
+			<div class="table-responsive" style="overflow: auto; height: 500px;">
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>Medico</th>
+							<th>Fecha</th>
+							<th>Descripcion</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="odd gradeX" ng-repeat="historia in jugador.historiaMedica" ng-dblclick="loadMedicalHistoryRecord(historia)">
+							<td class="col-md-3 col-xs-3">{{historia.medico}}</td>
+							<td class="col-md-3 col-xs-3">{{historia.fecha | date:"dd/MM/yyyy"}}</td>
+							<td class="col-md-6 col-xs-6">{{historia.descripcion}}</td>
+						</tr>
+							<tr ng-show="!jugador.historiaMedica || !jugador.historiaMedica.length"><td colspan="3" style="font-style: italic;">
+								No hay registros ingresados.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>

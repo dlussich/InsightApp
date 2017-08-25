@@ -1,0 +1,60 @@
+<div id="page-wrapper">	
+	<h2>{{workout.nombre}}</h2>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-5">
+			<form role="form" name="workoutForm" ng-submit="addEjercicio()" novalidate>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6">
+			            <div class="form-group">
+							<input class="form-control" placeholder="Nombre" ng-model="ejercicio.nombre" name="nombre" required>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6">
+			            <div class="form-group">
+							<input class="form-control" placeholder="Repeticiones" ng-model="ejercicio.repeticiones" name="repeticiones" required>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="form-group">
+							<input class="form-control" placeholder="Series" ng-model="ejercicio.series" name="series" required>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-6 col-md-offset-3">
+						<div class="form-group">
+							<input class="btn btn-primary btn-block btn-lg" type="submit" value="Agregar ejercicio" ng-disabled="workoutForm.$invalid">
+							<a ng-click="goToProfile()" class="btn btn-warning btn-block btn-lg">Cancelar</a>					
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-7">
+			<div class="table-responsive" style="overflow: auto; height: 500px;">
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>repeticiones</th>
+							<th>Series</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="odd gradeX" ng-repeat="ejercicio in workout.ejercicios">
+							<td class="col-md-3 col-xs-3">{{ejercicio.nombre}}</td>
+							<td class="col-md-3 col-xs-3">{{ejercicio.repeticiones}}</td>
+							<td class="col-md-6 col-xs-6">{{ejercicio.series}}</td>
+						</tr>
+							<tr ng-show="!workout.ejercicos || !workout.ejercicos.length"><td colspan="3" style="font-style: italic;">
+								No hay registros ingresados.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
